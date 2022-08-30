@@ -3,7 +3,13 @@ class MainController < ApplicationController
 
     def index
         output_Api = @GitHubApi.get_repositories(params[:search])
-        render json: output_Api.body, status: :ok
+        langs = ['ruby','python','c#','java','javascript']
+
+        if langs.include?(output_Api)
+            render json: output_Api.body, status: :ok
+        else
+            render json: {errors: "tente buscar por ruby, python, c#, java ou javascript"}, status: :ok
+        end
     end
 
     def show
