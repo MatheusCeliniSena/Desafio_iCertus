@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  get '/favorites', to: 'favorite#index'
+  get '/favorites/:id', to: 'favorite#show'
+  delete '/favorites/:id', to: 'favorite#destroy'
+  post '/favorites/:owner/:repo', to: 'favorite#new'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  get '/repositories/:search', to: 'main#index'
+  get '/repository/:owner/:repo', to: 'main#show'
 end
