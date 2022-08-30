@@ -3,6 +3,7 @@ class MainController < ApplicationController
 
     def index
         output_Api = @GitHubApi.get_repositories(params[:search])
+        render json: output_Api.body, status: :ok
     end
 
     def show
