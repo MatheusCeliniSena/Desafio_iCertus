@@ -1,24 +1,72 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+  Projeto desafio técnico iCertus de programação Back-end, utilizando a linguagem Ruby com o framework Rails, a aplicação deve listar e favoritar alguns repositórios, que serão fornecidos com a API do github
 
-Things you may want to cover:
+## EXECUTANDO O CÓDIGO
+Clone o repositório:
 
-* Ruby version
+```
+git clone https://github.com/MatheusCeliniSena/Desafio_iCertus.git
+```
 
-* System dependencies
+Entre na pasta criada:
 
-* Configuration
+```
+cd Desafio_iCertus
+```
 
-* Database creation
+Execute as migrations
 
-* Database initialization
+```
+rails db:create
+rails db:migrate
+```
 
-* How to run the test suite
+Rode os testes:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+rspec
+```
 
-* Deployment instructions
+Inicie o projeto com:
 
-* ...
+```
+rails server
+```
+
+## Detalhes
+
+-   Ruby version: 3.1.2
+-   Rails version: 7.0.3
+-   Database: PostgreSQL
+-   Gems: 'Faraday', 'rspec-rails' 
+
+## Rotas e como usar
+
+#### Buscar repositórios de uma das seguintes linguagens 
+ - ruby
+ - java
+ - python
+ - javascript
+ - sql
+
+(GET) https://icertusdesafio.herokuapp.com/repositories/:linguagem
+
+#### Buscar repositório especifico
+Utilize o nome do autor e do repositorio como parametro de busca
+
+(GET) https://icertusdesafio.herokuapp.com/repository/:autor/:repositório
+
+#### Listar favoritos
+
+(GET) https://icertusdesafio.herokuapp.com/favorites
+
+#### Adicionar favoritos
+Utilize o nome do autor e o nome do repositorio como parametro de busca
+
+(POST) https://icertusdesafio.herokuapp.com/favorites/rails/rails
+
+#### Remover dos favoritos
+Passe o id do favorito para remover da lista de favoritos
+
+(DELETE) https://icertusdesafio.herokuapp.com/favorites/:id
