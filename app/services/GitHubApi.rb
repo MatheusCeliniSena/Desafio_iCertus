@@ -8,9 +8,14 @@ class GitHubApi
     
 
     def get_repositories(search)
-        api = Faraday.get('https://api.github.com/search/repositories') do |requisição|
-            requisição.headers = header
-            requisição.params = {q:search, sort:'starts', order:'desc'}
+        
+        if search == "ruby" || search == "java" || search == "python" || search == "javascript" || search == "sql"
+            return false
+        else
+            api = Faraday.get('https://api.github.com/search/repositories') do |requisição|
+                requisição.headers = header
+                requisição.params = {q:search, sort:'starts', order:'desc'}
+            end
         end
     end
     
